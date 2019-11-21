@@ -149,7 +149,7 @@ llenar();
     public static void llenar(){
     //
    index.matriz[0][0].setCodigoEstado("E");
-   index.matriz[0][0].setToken("Numero entero");
+   index.matriz[0][0].setToken("Numero");
    
    index.matriz[0][1].setCodigoEstado("H");
    index.matriz[0][1].setToken("Identificador");
@@ -184,7 +184,7 @@ llenar();
     index.matriz[0][9].setToken("Signo");
   //
    index.matriz[4][0].setCodigoEstado("E");
-    index.matriz[4][0].setToken("Numero entero");
+    index.matriz[4][0].setToken("Numero");
    
    index.matriz[4][4].setCodigoEstado("F");
     index.matriz[4][4].setToken("Error");

@@ -58,6 +58,7 @@ analizador.llenarmatriz();
         tipotoken = new javax.swing.JLabel();
         LETTER = new javax.swing.JLabel();
         TOKEN = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -139,6 +140,14 @@ analizador.llenarmatriz();
         TOKEN.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(TOKEN, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 150, 30));
 
+        jButton1.setText("ANALIZADOR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 130, 70));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 520));
 
         pack();
@@ -158,8 +167,13 @@ for(int i=0; i<analizador.lista.size();i++){
 tmp.analizar(analizador.lista.get(i));
 }
 tokens.toknes();
+leeR();
     }//GEN-LAST:event_searchActionPerformed
 int count=0;
+public void leeR(){
+
+
+}
     private void TokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TokenActionPerformed
     
  //System.out.println(analizador.tmp.get(count).getLetra()+" "+analizador.tmp.get(count).getTipo());
@@ -174,6 +188,11 @@ int count=0;
   }
   
     }//GEN-LAST:event_TokenActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        analizadorsintatic g=new analizadorsintatic();
+        g.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 public void leer(){
 //Creamos el objeto JFileChooser
 JFileChooser fc=new JFileChooser();
@@ -231,6 +250,7 @@ analizador.leer(seleccion, fc);
     private javax.swing.JLabel LETTER;
     private javax.swing.JLabel TOKEN;
     private javax.swing.JButton Token;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

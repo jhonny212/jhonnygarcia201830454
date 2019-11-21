@@ -6,6 +6,7 @@
 package proyectofinal;
 
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import pila.estado;
 import pila.matriz;
 
@@ -25,7 +26,7 @@ public class analizadorsintatic extends javax.swing.JFrame {
       matriz.llenar();
       
       getfunction();
-      System.out.println("hola");
+      
     }
 
     /**
@@ -37,17 +38,44 @@ public class analizadorsintatic extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        jLabel1.setText("ANALIZADOR");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(122, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addContainerGap(247, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -94,72 +122,118 @@ public class analizadorsintatic extends javax.swing.JFrame {
     LinkedList<String> lists=new LinkedList();   
     LinkedList<String> lists2=new LinkedList();   
   
-    String cod="";
    lists.push("$");
    lists.push("A");
+   
  
    
    
    boolean pila=true;
-     lists2.push("}");
-     lists2.push("{");
-     lists2.push(")");
-     lists2.push("(");
-     lists2.push("Identificador");
-     lists2.push("funcion");
-     int count=lists.size();
-      System.out.println(count +" c");
+     lists2.push("$");
+  
+for(int i=analizador.lista.size()-1; i>=0;i--){
+
+   try{
+   int a=Integer.parseInt(analizador.tmp.get(i).getLetra());
+   lists2.push("numero");
+   }catch(Exception e){
+    try{
+ float flotante = Float.parseFloat(analizador.tmp.get(i).getLetra());
+   lists2.push("flotante");
+   }catch(Exception es){
+   try{
+      if(analizador.tmp.get(i).getToken().equals("Identificador")){
+      if(reservadas(analizador.tmp.get(i).getLetra())){
+      lists2.push(analizador.tmp.get(i).getLetra());
+
+      }else{
+       lists2.push("Identificador");
+     }
+      }else{
+      lists2.push(analizador.tmp.get(i).getLetra());
+
+      }
+   }catch(Exception s){}
+   }
+   }
+}
+  
+     int count=0;
+boolean valids=true;
        
-    while(pila){
-        if(lists.size()<0){
+  
+     while(pila && valids) {
+
+     if(lists.size()<=0){
         pila=false;
         }
+  
+
             for(int i=0; i<27;i++){
             for(int j=0; j<38;j++){
                 try{
-                 
-                   
-           if(matriz.matriz[i][j].getEstado().equals(lists.get(0))){
-            System.out.println(lists.get(0)+"--->");
+                if(lists.get(0).equals(lists2.get(0))){
+                    valids=true;
+                    System.out.println(lists.get(0)+" "+ lists2.get(0));
+              
+                lists.pop();
+                lists2.pop();
                 
+                }}catch(IndexOutOfBoundsException e){}
                 
-           String arrayt[]=matriz.matriz[i][j].getEstado().split(" ");
-                if(arrayt[arrayt.length-1].equals("landa")){
-                 lists.pop();
-                 System.out.println("entra");
-                 
-                 } else {
-               
-                  lists.pop();
-               
-                   if(noTerminal(arrayt[arrayt.length-1])){
+                try{
                     
-                    for(int k=arrayt.length; k<=0;k--){
+                if(matriz.matriz[i][j].getEstado().equals(lists.get(0)) && 
+                matriz.matriz[i][j].getTipo().equals(lists2.get(0))){
+                   count=1;
+                    
+                if(landa(matriz.matriz[i][j].getCod())){
+                lists.pop();
+               }
+              
+                else{
+                    
+                String arrayt[]=matriz.matriz[i][j].getCod().split(" ");
+                
+                
+                lists.pop();
+                
+                for(int k=arrayt.length-1; k>=0;k--){
                     lists.push(arrayt[k]);
                  }
-                   }else{
-                   if(lists.get(0).equals(lists2.get(0))){
-                   lists.pop();
-                   lists2.pop();
-                   }else{
-                   }
-                   }}
-             
+                 
+                       
                 
-             }
+                }
+                
               
+         }else{valids=false;}
                 }catch(NullPointerException e){
              
              
-        }
+        }catch(IndexOutOfBoundsException e){}
             
-            }}}
-        
-        
+            }
+            }
+  
+       }
     
+    System.out.println(lists2.size()+" "+lists.size());
+
+        
+      
+        if(lists2.size()<= 0 && lists.size()<=0){
+        JOptionPane.showMessageDialog(this,"La cadena es valida");
+        
+        }else{
+        JOptionPane.showMessageDialog(this,"No es valida Error en "+lists2.get(0));
+        
+        }
+        
+    this.setVisible(false);
    
      
-        
+      
     }
     
     private boolean noTerminal(String cad){
@@ -168,7 +242,9 @@ public class analizadorsintatic extends javax.swing.JFrame {
     "M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
     
     
-    return validar;}
+    return validar;
+    
+    }
     
        private boolean landa(String cad){
     boolean validar=false;
@@ -177,7 +253,22 @@ public class analizadorsintatic extends javax.swing.JFrame {
     }
     
     return validar;}
+        public static boolean  reservadas(String c){
+   boolean valid=false;
+   String reservadas[]={"funcion","principal","retornar","vacio",
+       "carácter","para","variable","VERDADERO","FALSO","entero","decimal","booleano","cadena"
+           ,"carácter","si","sino","mientras","hacer","{","}","(",")"
+        };
+       for (String reservada : reservadas) {
+           if (reservada.equals(c)) {
+             valid=true;
+           }
+       }
+        
+return valid;        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
