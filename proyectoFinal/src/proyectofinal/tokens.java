@@ -108,7 +108,12 @@ public class tokens {
       tokens t=new tokens();
             
             t.setLetra(analizador.tmp.get(i).getLetra());
-            t.setToken(analizador.tmp.get(i).getToken());
+            if(reservadas(analizador.tmp.get(i).getLetra()).equals("")){
+              System.out.println(reservadas(analizador.tmp.get(i).getLetra()));  
+            t.setToken(analizador.tmp.get(i).getToken());}else{
+            t.setToken(reservadas(analizador.tmp.get(i).getLetra()));
+            }
+            
             list.add(t);
           
     
@@ -117,4 +122,28 @@ public class tokens {
        
        
   }
+   public static String  reservadas(String c){
+   String caden="";
+   
+   String reservadas[]={"funcion","principal","retornar","vacio",
+       "carácter","para","variable","entero","decimal","booleano","cadena","carácter","si","sino","mientras","hacer"};
+       for (String reservada : reservadas) {
+           if (reservada.equals(c)) {
+               caden="reservada";
+           }
+       }
+      
+   String reservadass[]={"VERDADERO","FALSO"};
+       for (String reservadas1 : reservadass) {
+           if (reservadas1.equals(c)) {
+               caden="boolean";
+           }
+       }
+       try{
+       int a=Integer.parseInt(c);
+       caden="numero";
+       }catch(Exception e){}
+   
+   
+   return caden;}
 }

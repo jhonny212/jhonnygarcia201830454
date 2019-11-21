@@ -122,6 +122,8 @@ switch(j){
 
          case 7:
         index.matriz[i][j].setTipo("=");
+           index.matriz[i][j].setToken("Operador");
+     
         break;
          case 8:
         index.matriz[i][j].setTipo(";");
@@ -262,8 +264,10 @@ for(int j=0;j<12;j++){
        expresion list=new expresion();
         estadoInicial="A";
         list.setLetra(txt);
+        
         list.setToken(index.matriz[i][j].getToken());
         list.setTipo(tipo);
+        
         tmp.add(list);
         k=k-1;
         tipo="";

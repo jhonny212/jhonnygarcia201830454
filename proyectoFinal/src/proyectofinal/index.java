@@ -58,7 +58,6 @@ analizador.llenarmatriz();
         tipotoken = new javax.swing.JLabel();
         LETTER = new javax.swing.JLabel();
         TOKEN = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -77,16 +76,16 @@ analizador.llenarmatriz();
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 450, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 450, 60));
 
         jLabel2.setFont(new java.awt.Font("AnjaliOldLipi", 1, 18)); // NOI18N
         jLabel2.setText("Version 1.0");
@@ -102,7 +101,7 @@ analizador.llenarmatriz();
                 searchActionPerformed(evt);
             }
         });
-        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 130, 50));
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 130, 50));
 
         texto.setBackground(new java.awt.Color(153, 153, 255));
         texto.setColumns(20);
@@ -111,7 +110,7 @@ analizador.llenarmatriz();
         texto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
         jScrollPane1.setViewportView(texto);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 230, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 260, 270));
 
         Token.setText("Obtener token");
         Token.addActionListener(new java.awt.event.ActionListener() {
@@ -119,29 +118,26 @@ analizador.llenarmatriz();
                 TokenActionPerformed(evt);
             }
         });
-        jPanel1.add(Token, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 140, 40));
+        jPanel1.add(Token, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 140, 40));
 
+        letratoken.setBackground(new java.awt.Color(153, 0, 0));
+        letratoken.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         letratoken.setForeground(new java.awt.Color(255, 255, 255));
         letratoken.setText("LETRA");
-        jPanel1.add(letratoken, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 100, -1));
+        jPanel1.add(letratoken, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 100, -1));
 
+        tipotoken.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 18)); // NOI18N
         tipotoken.setForeground(new java.awt.Color(255, 255, 255));
         tipotoken.setText("TOKEN");
-        jPanel1.add(tipotoken, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
+        jPanel1.add(tipotoken, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
 
-        LETTER.setText("#");
-        jPanel1.add(LETTER, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 225, 160, 20));
+        LETTER.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        LETTER.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.add(LETTER, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 160, 20));
 
-        TOKEN.setText("#");
-        jPanel1.add(TOKEN, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 80, 30));
-
-        jButton1.setText("Reporte de tokens");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 150, 40));
+        TOKEN.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        TOKEN.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel1.add(TOKEN, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 150, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 520));
 
@@ -178,10 +174,6 @@ int count=0;
   }
   
     }//GEN-LAST:event_TokenActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 public void leer(){
 //Creamos el objeto JFileChooser
 JFileChooser fc=new JFileChooser();
@@ -239,7 +231,6 @@ analizador.leer(seleccion, fc);
     private javax.swing.JLabel LETTER;
     private javax.swing.JLabel TOKEN;
     private javax.swing.JButton Token;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
